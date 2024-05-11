@@ -1,0 +1,136 @@
+﻿@model ETB_Final_Code.travelrequest
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Travel Request</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+
+
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.employeefirstname, "First Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.employeefirstname, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your first name" } })
+            @Html.ValidationMessageFor(model => model.employeefirstname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.employeelastname, "Last Name :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.employeelastname, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your last name" } })
+            @Html.ValidationMessageFor(model => model.employeelastname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.employeeemail, "Email Id :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.employeeemail, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your email id" } })
+            @Html.ValidationMessageFor(model => model.employeeemail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.reasonfortravel, "Travel Reason :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.reasonfortravel, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your travel reason here" } })
+            @Html.ValidationMessageFor(model => model.reasonfortravel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.flightneeded, "Need Flight? :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.flightneeded, new SelectList(new[] { "Yes", "No" }), "-- Select --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.flightneeded, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.hotelneeded, "Need Hotel? :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.hotelneeded, new SelectList(new[] { "Yes", "No" }), "-- Select --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.hotelneeded, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.departurecity, "Departure City :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.departurecity, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your departure city" } })
+            @Html.ValidationMessageFor(model => model.departurecity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.arrivalcity, "Arrival City :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.arrivalcity, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your arrival city" } })
+            @Html.ValidationMessageFor(model => model.arrivalcity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.departuredate, "Departure Date :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.departuredate, new { htmlAttributes = new { @class = "form-control", required = "required", id = "departuredate", placeholder = "ex: 2023-05-25" } })
+            @Html.ValidationMessageFor(model => model.departuredate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.departuretime, "Departure Time :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.departuretime, new { htmlAttributes = new { @class = "form-control", required = "required", id = "departuretime", placeholder = "17:15" } })
+            @Html.ValidationMessageFor(model => model.departuretime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.additionalinformation, "Additional Information :", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.additionalinformation, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Enter your additional details" } })
+            @Html.ValidationMessageFor(model => model.additionalinformation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- <div class="form-group">
+         @Html.LabelFor(model => model.approvalstatus, htmlAttributes: new { @class = "control-label col-md-2" })
+         <div class="col-md-10">
+             @Html.EditorFor(model => model.approvalstatus, new { htmlAttributes = new { @class = "form-control" } })
+             @Html.ValidationMessageFor(model => model.approvalstatus, "", new { @class = "text-danger" })
+         </div>
+     </div>-->
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
